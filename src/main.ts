@@ -19,6 +19,11 @@ actionsToolkit.run(
     const inputs: context.Inputs = await context.getInputs();
     const toolkit = new Toolkit();
 
+    await core.group(`Info dump`, async () => {
+      core.info("RUNNER_TEMP: " + process.env.RUNNER_TEMP)
+      core.info("Context.tmpDir: " + Context.tmpDir());
+    });
+
     await core.group(`GitHub Actions runtime token ACs`, async () => {
       try {
         await GitHub.printActionsRuntimeTokenACs();
